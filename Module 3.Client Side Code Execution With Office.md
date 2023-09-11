@@ -238,6 +238,59 @@ $thandle=[Kernel32]::CreateThread(0,0,$addr,0,0,0);
 [Kernel32]::WaitForSingleObject($thandle, [uint32]"0xFFFFFFFF")
 ```
 
+10. C# để định nghĩa delegate type trong PowerShell. Gọi MessageBoxA mà không cần Add-Type, thực thi nó trong bộ nhớ đệm
+```
+function LookupFunc {
+
+Param ($moduleName, $functionName)
+
+    $assem = ([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].
+        Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
+    $tmp=@()
+    $assem.GetMethods() | ForEach-Object {If($_.Name -eq "GetProcAddress") {$tmp+=$_}}
+    return $tmp[0].Invoke($null, @(($assem.GetMethod('GetModuleHandle')).Invoke($null, @($moduleName)), $functionName))
+} 
+
+$MessageBoxA = LookupFunc user32.dll MessageBoxA
+
+# Creating a custom assembly object in memory
+$MyAssembly = New-Object System.Reflection.AssemblyName('ReflectedDelegate')
+
+# Setting the access mode of the MyAssembly to Run
+$Domain = [AppDomain]::CurrentDomain
+$MyAssemblyBuilder = $Domain.DefineDynamicAssembly($MyAssembly, [System.Reflection.Emit.AssemblyBuilderAccess]::Run)
+
+# Creating a custom module inside the assembly
+$MyModuleBuilder = $MyAssemblyBuilder.DefineDynamicModule('InMemoryModule', $false)
+
+# Creating a custom type in the assembly
+$MyTypeBuilder = $MyModuleBuilder.DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
+
+# Creating a constructor for the custom delegate type
+$MyConstructorBuilder = $MyTypeBuilder.DefineConstructor(
+'RTSpecialName, HideBySig, Public', 
+ [System.Reflection.CallingConventions]::Standard, 
+ @([IntPtr], [String], [String], [int]))
+
+# Setting implementation flags for the constructor  
+$MyConstructorBuilder.SetImplementationFlags('Runtime, Managed')
+
+#  Defining and configuring the Invoke method
+$MyMethodBuilder = $MyTypeBuilder.DefineMethod('Invoke', 
+'Public, HideBySig, NewSlot, Virtual', 
+ [int], 
+ @([IntPtr], [String], [String], [int]))
+
+$MyMethodBuilder.SetImplementationFlags('Runtime, Managed')
+
+# To instantiate the delegate type, we call our custom constructor through the CreateType method
+$MyDelegateType = $MyTypeBuilder.CreateType()
+
+# Have a delegate type to use
+$MyFunction = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($MessageBoxA, $MyDelegateType)
+
+$MyFunction.Invoke([IntPtr]::Zero,"Hello World","This is My MessageBox",0)
+```
 
 
 Resource:   
@@ -245,19 +298,6 @@ Resource:
 - [OSEP-Breaking-Chains/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb at main · gh0x0st/OSEP-Breaking-Chains (github.com)](https://github.com/gh0x0st/OSEP-Breaking-Chains/blob/main/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb)     
 - [OSEP-Breaking-Chains/Runners/Caesar-XOR-Shellcode-Runner.vb at main · gh0x0st/OSEP-Breaking-Chains (github.com)](https://github.com/gh0x0st/OSEP-Breaking-Chains/blob/main/Runners/Caesar-XOR-Shellcode-Runner.vb)     
 - [OSEP-Code-Snippets/Simple Shellcode Runner/Simple Shellcode Runner.vba at main · chvancooten/OSEP-Code-Snippets (github.com)](https://github.com/chvancooten/OSEP-Code-Snippets/blob/main/Simple%20Shellcode%20Runner/Simple%20Shellcode%20Runner.vba)    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
