@@ -5,9 +5,12 @@ A repo that contains scripts during the journey i learn OSEP course :))
 
 
 
+[OSEP - How to Pass the Exam (Notes, Reviews, Tips, etc)](https://github.com/col-1002/OSEP-Course/blob/main/OSEP%20-%20How%20to%20Pass%20the%20Exam.md)
 
 
-Adđitional resource/reference:  
+
+
+### Adđitional resource/reference:  
  
 - [Running ShellCode in Memory | AV Evasion – VBA Version – San3ncrypt3d Inc. – Making cybersecurity a habit & Privacy a Goal](https://san3ncrypt3d.com/2021/08/13/VBAShell/)
 - [OSEP-Breaking-Chains/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb at main · gh0x0st/OSEP-Breaking-Chains (github.com)](https://github.com/gh0x0st/OSEP-Breaking-Chains/blob/main/Runners/Caesar-XOR-Staged-Shellcode-Runner.vb)     
