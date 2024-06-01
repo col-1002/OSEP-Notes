@@ -165,8 +165,6 @@ To mitigate these risks, it is advisable for organizations to implement strict m
 
 ## 3.2.1 Introduction to VBA
 
-Các báo cáo VA Nessus đã làm về cái này rồi. Viết các hàm macro để thêm màu cho các MỨC ĐỘ. Vào phần "VIEW" -> chọn Macro. 
-
 Purpose: Convince the victim to execute malicious macro code when clicking "Enable Content". Use the two available methods `Document_Open()` and `AutoOpen()`. Save the document file in Macro-Enabled format such as **.doc or .docm**. **.docx** format will not save macros
 
 The key in client-side attacks is to convince the victim to open the document and enable macros. 
