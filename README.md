@@ -10,6 +10,10 @@ A repo that contains scripts during the journey i learn OSEP course :))
 
 Thank you, to everyone who's code was used in this repository.
 
+Red Teams Notes
+- https://dmcxblue.gitbook.io/red-team-notes-2-0
+- https://www.ired.team/
+
 ### Adđitional resource/reference:  
 
  
