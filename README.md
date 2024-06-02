@@ -1,14 +1,11 @@
 # OSEP-Course
-A repo that contains scripts during the journey i learn OSEP course :))
+Notes during the OSEP course
 
-
-
-
-
-[OSEP - How to Pass the Exam (Notes, Reviews, Tips, etc)](https://github.com/col-1002/OSEP-Course/blob/main/OSEP%20-%20How%20to%20Pass%20the%20Exam.md)
+- [Reviews OSEP](https://github.com/col-1002/OSEP-Course/blob/main/OSEP%20-%20How%20to%20Pass%20the%20Exam.md) - How to Pass the Exam (Notes, Reviews, Tips, etc)
 
 
 Thank you, to everyone who's code was used in this repository.
+
 
 Red Teams Notes
 - https://dmcxblue.gitbook.io/red-team-notes-2-0
