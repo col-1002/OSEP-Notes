@@ -9,3 +9,4 @@ Offensive Security Experienced Penetration Tester (OSEP) Review - [StefLan's Sec
 PEN-300 & OSEP Exam Review – [alex-labs.com](https://alex-labs.com/pen-300-osep-exam-review/)            
 OSEP Review and Exam - [from @spaceraccoonsec](https://spaceraccoon.dev/offensive-security-experienced-penetration-tester-osep-review-and-exam/)            
 Passing the OSEP Exam Using Sliver from [Jon Guild @BishopFox](https://bishopfox.com/blog/passing-the-osep-exam-using-sliver)           
+[How OSEP làm khó tôi một chút](https://viblo.asia/p/cach-osepadvanced-evasion-techniques-and-breaching-defenses-lam-kho-toi-a-little-bit-EbNVQ5jWVvR)
