@@ -804,7 +804,9 @@ TODO
 In this module, several process injection and migration techniques were demonstrated. The exploration included a typical C# injection into a local process, as well as DLL injection into a remote process. Reflective DLL injection, which does not write to disk, was also covered, along with process hollowing to inject code into a process known to generate network activity. Each of these techniques helps reduce the footprint on the remote system and minimizes the chances of detection by security software.
 
 **TODO**:
-Portable Executable (PE) Injection
+
+Portable Executable (PE) Injection   
+
 Modify the code to generate a Jscript file using DotNetToJscript that performs process hollowing.
 
 .
