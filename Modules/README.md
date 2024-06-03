@@ -1,5 +1,9 @@
 # OSEP Skill
 
+The following content is written based on the OSEP course syllabus. This knowledge is gleaned from the Internet (Blogs, Github, Pages and News).
+
+---
+
 ## Client-Side Attacks
 Module 3. Client Side Code Execution With Office    
 Module 4. Client-Side code execution with Windows Scripts Host 
