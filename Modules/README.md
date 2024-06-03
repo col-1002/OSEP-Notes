@@ -1,16 +1,16 @@
 # OSEP Skill
 
-The following content is written based on the OSEP course syllabus. This knowledge is gleaned from the Internet (Blogs, Github, Pages and News).
+The following content is written based on the OSEP course syllabus. This knowledge is gleaned from the Internet (Blogs, Github, Pages, and News).
 
 ---
 
 ## Client-Side Attacks
-Module 3. Client Side Code Execution With Office    
-Module 4. Client-Side code execution with Windows Scripts Host 
+[Module 3](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%203.%20Client%20Side%20Code%20Execution%20With%20Office.md). Client Side Code Execution With Office    
+[Module 4](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%204.%20Client-Side%20code%20execution%20with%20Windows%20Scripts%20Host.md). Client-Side code execution with Windows Scripts Host 
 
 ## Windows Evasion Techniques
 ### Antivirus Evasion
-Module 5. Process injection & migration     
+[Module 5](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%205.%20Process%20injection%20and%20migration.md). Process injection & migration     
 Module 6. Introduction to Antivirus Evasion      
 Module 7. Advanced Antivirus Evasion     
 
