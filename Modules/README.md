@@ -30,8 +30,8 @@ Module 13. Windows Lateral Movement
 Module 14. Linux Lateral Movement    
 
 ## Domain Attack
-Module 15. Microsoft SQL Attacks
-Module 16. Active Directory Exploitation
+Module 15. Microsoft SQL Attacks    
+Module 16. Active Directory Exploitation      
 
 ## Mind set
 Module 17. Put it all together
