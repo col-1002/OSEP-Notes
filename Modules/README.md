@@ -11,7 +11,7 @@ The following content is written based on the OSEP course syllabus. This knowled
 ## Windows Evasion Techniques
 ### Antivirus Evasion
 [Module 5](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%205.%20Process%20injection%20and%20migration.md). Process injection & migration     
-Module 6. Introduction to Antivirus Evasion      
+[Module 6](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%206.%20Intro%20to%20Antivirus%20Evasion.md). Introduction to Antivirus Evasion      
 Module 7. Advanced Antivirus Evasion     
 
 ### Application Evasion
