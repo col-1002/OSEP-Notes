@@ -23,3 +23,6 @@ Red Teams Notes
 
 ### Credit
 - [chvancooten](https://github.com/chvancooten/OSEP-Code-Snippets/tree/main)
+
+### DISCLAIMER 
+This is for education learning purposes only, use code at your own risk.
