@@ -1,5 +1,5 @@
 # OSEP-Note
-Notes during the OSEP course
+Note during self-study OSEP course from the Internet.
 
 - [Reviews OSEP](https://github.com/col-1002/OSEP-Course/blob/main/OSEP%20-%20How%20to%20Pass%20the%20Exam.md) - How to Pass the Exam (Notes, Reviews, Tips, etc)
 - [Red Team skill](https://github.com/col-1002/OSEP-Course/blob/main/Modules/README.md) - Skills improve based on the course 
