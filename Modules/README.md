@@ -2,6 +2,8 @@
 
 The following content is written based on the OSEP course syllabus. This knowledge is gleaned from the Internet (Blogs, Github, Pages, and News).
 
+I did NOT copy the content of the OSEP course.
+
 ---
 
 ## Client-Side Attacks
@@ -33,6 +35,5 @@ Module 14. Linux Lateral Movement
 Module 15. Microsoft SQL Attacks    
 Module 16. Active Directory Exploitation      
 
-## Mind set
-Module 17. Put it all together
-Module 18. Trying Harder: The Labs
+## Mindset
+Put it all together & Continue
