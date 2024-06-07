@@ -1,4 +1,4 @@
-# OSEP-Course
+# OSEP-Note
 Notes during the OSEP course
 
 - [Reviews OSEP](https://github.com/col-1002/OSEP-Course/blob/main/OSEP%20-%20How%20to%20Pass%20the%20Exam.md) - How to Pass the Exam (Notes, Reviews, Tips, etc)
