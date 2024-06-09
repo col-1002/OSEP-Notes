@@ -17,7 +17,7 @@ I did NOT copy the content of the OSEP course.
 [Module 7](https://github.com/col-1002/OSEP-Notes/blob/main/Modules/Module%207.%20AMSI%20bypass.md). Advanced Antivirus Evasion     
 
 ### Application Evasion
-Module 8. Application Whitelisting
+[Module 8](https://github.com/col-1002/OSEP-Notes/blob/main/Modules/Module%208.%20Application%20Evasion.md). Application Whitelisting
 
 ### Network Evasion
 Module 9. Bypassing Network Filters
