@@ -54,7 +54,7 @@ frida-trace -p 1234 -x amsi.dll -i Amsi*
 If input is: `AmsiUtils` then *AmsiScanBuffer()* returns the value 32768 equal malicious        
 If input is: `AmsiUtils` then *AmsiScanBuffer()* returns the value 1 equal non-malicious        
 
-## Bypassing AMS with String Manipulation
+## Bypassing AMSI with String Manipulation
 This technique is called **String Manipulation**
 
 1. String concatenation: (`"amsi" and "Utils"`)
