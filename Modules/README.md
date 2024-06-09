@@ -10,7 +10,7 @@ I did NOT copy the content of the OSEP course.
 [Module 3](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%203.%20Client%20Side%20Code%20Execution%20With%20Office.md). Client Side Code Execution With Office    
 [Module 4](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%204.%20Client-Side%20code%20execution%20with%20Windows%20Scripts%20Host.md). Client-Side code execution with Windows Scripts Host 
 
-## Windows Evasion Techniques
+## Defense Evasion Techniques
 ### Antivirus Evasion
 [Module 5](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%205.%20Process%20injection%20and%20migration.md). Process injection & migration     
 [Module 6](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%206.%20Intro%20to%20Antivirus%20Evasion.md). Introduction to Antivirus Evasion      
