@@ -14,7 +14,7 @@ I did NOT copy the content of the OSEP course.
 ### Antivirus Evasion
 [Module 5](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%205.%20Process%20injection%20and%20migration.md). Process injection & migration     
 [Module 6](https://github.com/col-1002/OSEP-Course/blob/main/Modules/Module%206.%20Intro%20to%20Antivirus%20Evasion.md). Introduction to Antivirus Evasion      
-Module 7. Advanced Antivirus Evasion     
+[Module 7](https://github.com/col-1002/OSEP-Notes/blob/main/Modules/Module%207.%20AMSI%20bypass.md). Advanced Antivirus Evasion     
 
 ### Application Evasion
 Module 8. Application Whitelisting
