@@ -8,8 +8,8 @@ What is Application Control
 
 
 
-
-
+## Bypassing AppLocker with C`#`
+- [Arbitrary, Unsigned Code Execution Vector in Microsoft.Workflow.Compiler.exe](https://posts.specterops.io/arbitrary-unsigned-code-execution-vector-in-microsoft-workflow-compiler-exe-3d9294bc5efb)
 
 
 
